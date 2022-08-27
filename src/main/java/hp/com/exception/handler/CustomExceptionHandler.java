@@ -1,7 +1,9 @@
 package hp.com.exception.handler;
 
-import hp.com.dto.ErrorResponse;
+import hp.com.dto.ErrorCode;
+import hp.com.dto.response.ErrorResponse;
 import hp.com.exception.RequestParamInvalidException;
+import hp.com.exception.ResourceExistedException;
 import hp.com.exception.ResourceNotFoundException;
 import hp.com.exception.TokenInvalidException;
 import org.springframework.http.HttpStatus;
@@ -24,21 +26,27 @@ public class CustomExceptionHandler {
     @ExceptionHandler({RequestParamInvalidException.class})
     public ResponseEntity<ErrorResponse> handleTokenInvalidException(RequestParamInvalidException e) {
 
-        return new ResponseEntity<>(new ErrorResponse("E11", e.getMessage()), null,
+        return new ResponseEntity<>(new ErrorResponse(ErrorCode.E20.toString(), e.getMessage()), null,
             HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler({ResourceNotFoundException.class})
     public ResponseEntity<ErrorResponse> handleResourceNotFoundException(ResourceNotFoundException e) {
-        return new ResponseEntity<>(new ErrorResponse("E00", "Data Not Found"),
+        return new ResponseEntity<>(new ErrorResponse(ErrorCode.E00.toString(), e.getMessage()),
             null, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler({ResourceExistedException.class})
+    public ResponseEntity<ErrorResponse> handleResourceExistedException(ResourceExistedException e) {
+        return new ResponseEntity<>(new ErrorResponse(ErrorCode.E01.toString(), e.getMessage()), null,
+                HttpStatus.SEE_OTHER);
     }
 
     @ExceptionHandler({Exception.class})
     public ResponseEntity<ErrorResponse> handleCommonException(Exception e) {
 
         e.printStackTrace();
-        return new ResponseEntity<>(new ErrorResponse("E5", e.getMessage()), null,
+        return new ResponseEntity<>(new ErrorResponse(ErrorCode.E30.toString(), e.getMessage()), null,
             HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

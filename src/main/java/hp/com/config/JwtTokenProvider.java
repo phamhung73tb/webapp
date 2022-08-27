@@ -1,5 +1,6 @@
 package hp.com.config;
 
+import hp.com.dto.ErrorCode;
 import hp.com.exception.TokenInvalidException;
 import hp.com.log.LOG;
 import hp.com.utility.DateTimeUtils;
@@ -64,16 +65,16 @@ public class JwtTokenProvider {
             return true;
         } catch (MalformedJwtException ex) {
             LOG.errorFile("token " + authToken + " is invalid");
-           throw new TokenInvalidException("E1", "Invalid JWT token");
+           throw new TokenInvalidException(ErrorCode.E11.toString(), "Invalid JWT token");
         } catch (ExpiredJwtException ex) {
             LOG.errorFile("token " + authToken + " is expired");
-            throw new TokenInvalidException("E2", "Expired JWT token");
+            throw new TokenInvalidException(ErrorCode.E12.toString(), "Expired JWT token");
         } catch (UnsupportedJwtException ex) {
             LOG.errorFile("token " + authToken + " is unsupported");
-            throw new TokenInvalidException("E3", "Unsupported JWT token");
+            throw new TokenInvalidException(ErrorCode.E13.toString(), "Unsupported JWT token");
         } catch (Exception ex) {
             LOG.errorFile("token " + authToken + " is not found");
-            throw new TokenInvalidException("E5", "JWT not found");
+            throw new TokenInvalidException(ErrorCode.E14.toString(), "JWT not found");
         }
     }
 }

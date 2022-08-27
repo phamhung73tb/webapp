@@ -28,4 +28,7 @@ public class User {
 
     @Column(name = "phone_number")
     private String phoneNumber;
+
+    @Column(name = "total_money")
+    private Integer totalMoney;
 }

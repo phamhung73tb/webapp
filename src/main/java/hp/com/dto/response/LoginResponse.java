@@ -1,4 +1,4 @@
-package hp.com.dto;
+package hp.com.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,1 +1,1 @@
-package hp.com.service;import hp.com.dto.LoginResponse;import hp.com.dto.RequestLogin;import java.util.Optional;/** * * @author Pham Van Hung */public interface LoginService {    Optional<LoginResponse> login(RequestLogin request);}
+package hp.com.service;import hp.com.dto.response.LoginResponse;import hp.com.dto.request.RequestLogin;import java.util.Optional;/** * * @author Pham Van Hung */public interface LoginService {    Optional<LoginResponse> login(RequestLogin request);}

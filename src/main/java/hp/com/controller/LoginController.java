@@ -1,6 +1,6 @@
 package hp.com.controller;
 
-import hp.com.dto.RequestLogin;
+import hp.com.dto.request.RequestLogin;
 import hp.com.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
