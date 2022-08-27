@@ -1,0 +1,1 @@
+package hp.com.service;import hp.com.dao.entity.User;import hp.com.dto.request.RequestChangePwd;import hp.com.dto.request.RequestRegisterUser;import java.util.Optional;public interface UserService {    Optional<User> register(RequestRegisterUser newUser);    Optional<User> changPassword(RequestChangePwd userToChangePwd);}

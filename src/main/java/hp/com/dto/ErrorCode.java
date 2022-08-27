@@ -1,0 +1,1 @@
+package hp.com.dto;/** * Define error code to response * E0*: DB error * E1*: token error * E2*: request error * E3*: other error */public enum ErrorCode {    E00,    E01,    E11,    E12,    E13,    E14,    E20,    E30}
